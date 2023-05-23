@@ -14,6 +14,9 @@ body{}
     font-size: 300%;
     text-align: center;
 }
+.gameover .button{
+    pointer-events: none;
+}
 form.button button{
     width: 100px;
     height: 100px;
