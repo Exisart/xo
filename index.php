@@ -3,29 +3,36 @@ session_start();
 require_once 'controller/functions.php';
 
 if (isset($_POST['reset'])) {
-  createArray();
+  createArray(); // create new game
   unset($_POST);
 }
 
 if (!isset($_SESSION['array'])) {
-  createArray();
+  createArray(); // create new game
 }
 
-if (isset($_POST)) {
-  setX();
+if (isset($_POST)) { // if click button
+  setX(); // gamer move
   unset($_POST);
+
+  $win = winner(); // set winner
+
+  if (!(isset($win))) { // if game continues
+    setO(); // script move
+  }
 }
 
-$win = winner();
-if ($win == 'x') {
+// output winner
+if (isset($win) && $win == 'x') {
   echo 'You WIN!!!';
+} elseif (isset($win) && $win == 'o') {
+  echo 'You loose.';
+}
+
+
+// if winner isset - blocked buttons
+if (isset($win)) {
+  $wrapperClass = 'gameover';
 }
 
 include 'view/home.php';
-
-
-/*echo '<pre>';
-var_dump($_SESSION['array']);
-echo '</pre>';*/
-
-//unset($_SESSION['array']);

@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 
-<div class="wrapper">
+<div class="wrapper <?= $wrapperClass ?>">
 
   <?php foreach ($_SESSION['array'] as $key => $value) {
     if ($value == '?') {
